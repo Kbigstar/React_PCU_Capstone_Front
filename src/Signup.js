@@ -23,7 +23,7 @@ const currencies = [ //naver 기준
         label: '선택안함',
     },
 
-];
+]; // 성별
 
 const Month = [
     {
@@ -78,7 +78,7 @@ const Month = [
         value: '12',
         label: '12월',
     },
-];
+]; //월 (생년월일)
 
 function Signup() {
 
