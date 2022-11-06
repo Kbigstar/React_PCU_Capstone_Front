@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Box, Container } from "@mui/system";
 import CloudCircleIcon from '@mui/icons-material/CloudCircle';
 import { Button, Checkbox, FormControlLabel, TextField, Typography, MenuItem } from "@mui/material";
-
-
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
 
 const currencies = [ //naver 기준
     {
@@ -92,6 +92,26 @@ function Signup() {
         setMonth(event.target.value);
     };
 
+    const [email, setEmail] = useState("");
+
+    const onEmailChange = (e) => {
+        //e : 이벤트 객체
+        setEmail(e.target.value); //이벤트를 받는 타겟의 value값으로 변경
+    }
+
+    const [pwd, setPwd] = useState("");
+
+    const onPwdChange = (e) => {
+        //e : 이벤트 객체
+        setPwd(e.target.value); //이벤트를 받는 타겟의 value값으로 변경
+    }
+
+    const navigate = useNavigate();
+
+    const MoveLogin = () => {
+        navigate(`/login`); // 로그인 페이지로 이동
+    };
+
     return (
         <Box sx={{ mt: 5 }}>
             <Container sx={{ textAlign: 'center', border: 2, borderRadius: 10, borderColor: 'primary.main', width: 1 / 2 }}>
@@ -110,7 +130,9 @@ function Signup() {
                 }}
                            label="이메일 아이디"
                            name="email"
-                           autoComplete="email"
+                           autoComplete="ema    il"
+                           onChange={onEmailChange}
+                           value={email}
                 />
                 <TextField sx={{
                     width: 1, mt: 2,
@@ -124,6 +146,8 @@ function Signup() {
                            type="password"
                            helperText="8~16자 영문, 숫자, 특수문자를 사용하세요."
                            name="password"
+                           onChange={onPwdChange}
+                           value={pwd}
                 />
 
                 <TextField sx={{
@@ -136,7 +160,7 @@ function Signup() {
                 }}
                            label="비밀번호 확인"
                            type="password"
-                           name="password"
+                           name="pwdCheck"
                 />
 
 
@@ -183,10 +207,10 @@ function Signup() {
 
                 >
                     {currencies.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                        {option.label}
-                    </MenuItem>
-                ))}
+                        <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                        </MenuItem>
+                    ))}
                 </TextField>
 
                 <Typography sx={{
@@ -194,7 +218,7 @@ function Signup() {
                     display: 'flex',
                     justifyContent: 'flex'
                 }}
-                    component="h3" variant="h7">
+                            component="h3" variant="h7">
                     생년월일
                 </Typography>
 
@@ -254,7 +278,7 @@ function Signup() {
                 </Box>
 
                 <Box>
-                    <Button variant="outlined" sx={{ width: 1 / 2, mt: 2, mb: 5}}>가입하기</Button>
+                    <Button variant="outlined" sx={{ width: 1 / 2, mt: 2, mb: 5}} onClick={(event) => {event.preventDefault(); console.log("id : " + email +" pwd : " + pwd); MoveLogin({});}}> 가입하기 </Button>
                 </Box>
 
             </Container>
