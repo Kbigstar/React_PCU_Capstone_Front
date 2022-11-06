@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Box, Container } from "@mui/system";
 import CloudCircleIcon from '@mui/icons-material/CloudCircle';
-import { Button, Checkbox, FormControlLabel, TextField, Typography, MenuItem } from "@mui/material";
+import { Button, Checkbox, FormControlLabel, TextField, Typography, MenuItem,  } from "@mui/material";
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 
@@ -80,7 +80,10 @@ const Month = [
     },
 ]; //월 (생년월일)
 
+
 function Signup() {
+
+
 
     const [currency, setCurrency] = React.useState('sex');
     const handleChange = (event) => {
@@ -94,9 +97,11 @@ function Signup() {
 
     const [email, setEmail] = useState("");
 
+
     const onEmailChange = (e) => {
         //e : 이벤트 객체
         setEmail(e.target.value); //이벤트를 받는 타겟의 value값으로 변경
+
     }
 
     const [pwd, setPwd] = useState("");
@@ -130,9 +135,9 @@ function Signup() {
                 }}
                            label="이메일 아이디"
                            name="email"
-                           autoComplete="ema    il"
                            onChange={onEmailChange}
                            value={email}
+
                 />
                 <TextField sx={{
                     width: 1, mt: 2,
